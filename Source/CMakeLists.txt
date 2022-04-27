@@ -69,13 +69,25 @@ if(BUILD_OVERGROWTH)
     OpenGL::GL
     Freetype::Freetype
     ${OPENAL_LIBRARY}
-    binn
+    ${SDL2_LIBRARY}
+    # Bullet
     BulletDynamics
     BulletCollision
     BulletWorldImporter
     BulletFileLoader
+    LinearMath
+    # Detour & Recast
+    DetourCrowd
+    DetourTileCache
+    Detour
+    Recast
+    # Other
+    angelscript
+    binn
     crnlib
-    TheoraPlayer)
+    freeimage
+    TheoraPlayer
+    libzstd_static)
 
   if(LINUX)
     find_package(GTK2 REQUIRED)

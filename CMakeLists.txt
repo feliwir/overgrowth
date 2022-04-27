@@ -111,7 +111,12 @@ endif()
 set(SRCDIR "${CMAKE_SOURCE_DIR}/Source")
 set(LIBDIR "${CMAKE_SOURCE_DIR}/Libraries")
 
+
 add_subdirectory(Libraries/crunch-r319 crnlib)
+set(ZSTD_BUILD_PROGRAMS OFF)
+set(ZSTD_BUILD_STATIC ON)
+set(ZSTD_BUILD_SHARED OFF)
+add_subdirectory(Libraries/zstd-1.5.0/build/cmake zstd)
 
 add_subdirectory(Projects/angelscript_2_32_0_sdk/angelscript/projects/cmake
                  angelscript_2_32_0_sdk)
