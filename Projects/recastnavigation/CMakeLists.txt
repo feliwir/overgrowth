@@ -1,7 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
-PROJECT(RecastNavigation)
-
-SET(SRCDIR "${CMAKE_SOURCE_DIR}/../Libraries/recastnavigation")
+SET(SRCDIR "${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/recastnavigation")
 
 INCLUDE_DIRECTORIES(
     ${SRCDIR}/Recast/Include

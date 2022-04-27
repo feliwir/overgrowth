@@ -1,16 +1,5 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
-PROJECT(TheoraPlayer)
-
-SET(LIBDIR "${CMAKE_SOURCE_DIR}/../Libraries")
-SET(SRCDIR "${CMAKE_SOURCE_DIR}/../Libraries/TheoraPlayer/Source")
-
-INCLUDE_DIRECTORIES(
-    ${SRCDIR}
-    ${LIBDIR}/Linux/include
-    ${LIBDIR}/theora/include
-    ${LIBDIR}/ogg/include
-    ${LIBDIR}/vorbis/include
-)
+SET(LIBDIR "${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries")
+SET(SRCDIR "${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/TheoraPlayer/Source")
 
 FILE(GLOB THEORAPLAYER_SRCS
     ${SRCDIR}/TheoraPlayer/*.cpp
@@ -18,3 +7,12 @@ FILE(GLOB THEORAPLAYER_SRCS
 
 ADD_LIBRARY(TheoraPlayer STATIC ${THEORAPLAYER_SRCS})
 
+TARGET_INCLUDE_DIRECTORIES(
+    TheoraPlayer
+    PUBLIC
+    ${SRCDIR}
+    ${LIBDIR}/Linux/include
+    ${LIBDIR}/theora/include
+    ${LIBDIR}/ogg/include
+    ${LIBDIR}/vorbis/include
+)

@@ -1,14 +1,7 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
 SET(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvmgcc42")
-PROJECT(crnlib)
 
 SET(SRCDIR "${CMAKE_CURRENT_SOURCE_DIR}/crnlib")
 SET(LIBDIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
-
-INCLUDE_DIRECTORIES(
-    ${CMAKE_CURRENT_SOURCE_DIR}/crnlib
-    ${CMAKE_CURRENT_SOURCE_DIR}/inc
-)
 
 FILE(GLOB SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/crnlib/crn_dxt_endpoint_refiner.h
@@ -210,6 +203,14 @@ LIST(APPEND SOURCE_FILES ${SOURCE_FILES_APPLE})
 ENDIF()
 
 ADD_LIBRARY(crnlib STATIC ${SOURCE_FILES})
+
+TARGET_INCLUDE_DIRECTORIES(
+    crnlib
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/crnlib
+    ${CMAKE_CURRENT_SOURCE_DIR}/inc
+)
+
 IF(APPLE)
     SET_TARGET_PROPERTIES(crnlib PROPERTIES
         COMPILE_FLAGS "-O3 -fomit-frame-pointer -ffast-math -fno-math-errno -g -fno-strict-aliasing -Wall -Wno-unused-value -Wno-unused -march=core2"
